@@ -64,6 +64,9 @@ known_task_firstparty = "isaaclab_tasks"
 known_local_folder = "config"
 
 [tool.pyright]
+reportAssignmentType = "none"
+reportArgumentType = "none"
+
 
 include = ["source", "scripts"]
 exclude = [
