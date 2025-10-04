@@ -84,6 +84,14 @@ class UniformPoseCommand(CommandTerm):
         The first three elements correspond to the position, followed by the quaternion orientation in (w, x, y, z).
         """
         return self.pose_command_b
+    
+    @property
+    def command_w(self) -> torch.Tensor:
+        """The desired pose command in world frame. Shape is (num_envs, 7).
+
+        The first three elements correspond to the position, followed by the quaternion orientation in (w, x, y, z).
+        """
+        return self.pose_command_w
 
     """
     Implementation specific functions.

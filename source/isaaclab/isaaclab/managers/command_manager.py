@@ -381,6 +381,17 @@ class CommandManager(ManagerBase):
             The command tensor of the specified command term.
         """
         return self._terms[name].command
+    
+    def get_command_w(self, name: str) -> torch.Tensor:
+        """Returns the command for the specified command term.
+
+        Args:
+            name: The name of the command term.
+
+        Returns:
+            The command tensor of the specified command term.
+        """
+        return self._terms[name].command_w
 
     def get_term(self, name: str) -> CommandTerm:
         """Returns the command term with the specified name.
