@@ -131,7 +131,7 @@ class CommandTerm(ManagerTermBase):
         """
         # resolve the environment IDs
         if env_ids is None:
-            env_ids = slice(None)
+            env_ids = slice(None)  # type: ignore
 
         # add logging metrics
         extras = {}
@@ -345,7 +345,7 @@ class CommandManager(ManagerBase):
         """
         # resolve environment ids
         if env_ids is None:
-            env_ids = slice(None)
+            env_ids = slice(None)  # type: ignore
         # store information
         extras = {}
         for name, term in self._terms.items():

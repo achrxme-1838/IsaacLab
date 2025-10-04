@@ -35,7 +35,7 @@ class UniformVelocityCommandCfg(CommandTermCfg):
 
     class_type: type = UniformVelocityCommand
 
-    asset_name: str = MISSING
+    asset_name: str = MISSING  # type: ignore
     """Name of the asset in the environment for which the commands are generated."""
 
     heading_command: bool = False
@@ -63,13 +63,13 @@ class UniformVelocityCommandCfg(CommandTermCfg):
     class Ranges:
         """Uniform distribution ranges for the velocity commands."""
 
-        lin_vel_x: tuple[float, float] = MISSING
+        lin_vel_x: tuple[float, float] = MISSING  # type: ignore
         """Range for the linear-x velocity command (in m/s)."""
 
-        lin_vel_y: tuple[float, float] = MISSING
+        lin_vel_y: tuple[float, float] = MISSING  # type: ignore
         """Range for the linear-y velocity command (in m/s)."""
 
-        ang_vel_z: tuple[float, float] = MISSING
+        ang_vel_z: tuple[float, float] = MISSING  # type: ignore
         """Range for the angular-z velocity command (in rad/s)."""
 
         heading: tuple[float, float] | None = None
@@ -78,7 +78,7 @@ class UniformVelocityCommandCfg(CommandTermCfg):
         This parameter is only used if :attr:`~UniformVelocityCommandCfg.heading_command` is True.
         """
 
-    ranges: Ranges = MISSING
+    ranges: Ranges = MISSING  # type: ignore
     """Distribution ranges for the velocity commands."""
 
     goal_vel_visualizer_cfg: VisualizationMarkersCfg = GREEN_ARROW_X_MARKER_CFG.replace(
@@ -107,25 +107,25 @@ class NormalVelocityCommandCfg(UniformVelocityCommandCfg):
     class Ranges:
         """Normal distribution ranges for the velocity commands."""
 
-        mean_vel: tuple[float, float, float] = MISSING
+        mean_vel: tuple[float, float, float] = MISSING  # type: ignore
         """Mean velocity for the normal distribution (in m/s).
 
         The tuple contains the mean linear-x, linear-y, and angular-z velocity.
         """
 
-        std_vel: tuple[float, float, float] = MISSING
+        std_vel: tuple[float, float, float] = MISSING  # type: ignore
         """Standard deviation for the normal distribution (in m/s).
 
         The tuple contains the standard deviation linear-x, linear-y, and angular-z velocity.
         """
 
-        zero_prob: tuple[float, float, float] = MISSING
+        zero_prob: tuple[float, float, float] = MISSING  # type: ignore
         """Probability of zero velocity for the normal distribution.
 
         The tuple contains the probability of zero linear-x, linear-y, and angular-z velocity.
         """
 
-    ranges: Ranges = MISSING
+    ranges: Ranges = MISSING  # type: ignore
     """Distribution ranges for the velocity commands."""
 
 
@@ -135,10 +135,10 @@ class UniformPoseCommandCfg(CommandTermCfg):
 
     class_type: type = UniformPoseCommand
 
-    asset_name: str = MISSING
+    asset_name: str = MISSING  # type: ignore
     """Name of the asset in the environment for which the commands are generated."""
 
-    body_name: str = MISSING
+    body_name: str = MISSING  # type: ignore
     """Name of the body in the asset for which the commands are generated."""
 
     make_quat_unique: bool = False
@@ -151,25 +151,25 @@ class UniformPoseCommandCfg(CommandTermCfg):
     class Ranges:
         """Uniform distribution ranges for the pose commands."""
 
-        pos_x: tuple[float, float] = MISSING
+        pos_x: tuple[float, float] = MISSING  # type: ignore
         """Range for the x position (in m)."""
 
-        pos_y: tuple[float, float] = MISSING
+        pos_y: tuple[float, float] = MISSING  # type: ignore
         """Range for the y position (in m)."""
 
-        pos_z: tuple[float, float] = MISSING
+        pos_z: tuple[float, float] = MISSING  # type: ignore
         """Range for the z position (in m)."""
 
-        roll: tuple[float, float] = MISSING
+        roll: tuple[float, float] = MISSING  # type: ignore
         """Range for the roll angle (in rad)."""
 
-        pitch: tuple[float, float] = MISSING
+        pitch: tuple[float, float] = MISSING  # type: ignore
         """Range for the pitch angle (in rad)."""
 
-        yaw: tuple[float, float] = MISSING
+        yaw: tuple[float, float] = MISSING  # type: ignore
         """Range for the yaw angle (in rad)."""
 
-    ranges: Ranges = MISSING
+    ranges: Ranges = MISSING  # type: ignore
     """Ranges for the commands."""
 
     goal_pose_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/goal_pose")
@@ -191,10 +191,10 @@ class UniformPose2dCommandCfg(CommandTermCfg):
 
     class_type: type = UniformPose2dCommand
 
-    asset_name: str = MISSING
+    asset_name: str = MISSING  # type: ignore
     """Name of the asset in the environment for which the commands are generated."""
 
-    simple_heading: bool = MISSING
+    simple_heading: bool = MISSING  # type: ignore
     """Whether to use simple heading or not.
 
     If True, the heading is in the direction of the target position.
@@ -204,19 +204,19 @@ class UniformPose2dCommandCfg(CommandTermCfg):
     class Ranges:
         """Uniform distribution ranges for the position commands."""
 
-        pos_x: tuple[float, float] = MISSING
+        pos_x: tuple[float, float] = MISSING  # type: ignore
         """Range for the x position (in m)."""
 
-        pos_y: tuple[float, float] = MISSING
+        pos_y: tuple[float, float] = MISSING  # type: ignore
         """Range for the y position (in m)."""
 
-        heading: tuple[float, float] = MISSING
+        heading: tuple[float, float] = MISSING  # type: ignore
         """Heading range for the position commands (in rad).
 
         Used only if :attr:`simple_heading` is False.
         """
 
-    ranges: Ranges = MISSING
+    ranges: Ranges = MISSING  # type: ignore
     """Distribution ranges for the position commands."""
 
     goal_pose_visualizer_cfg: VisualizationMarkersCfg = GREEN_ARROW_X_MARKER_CFG.replace(
@@ -238,11 +238,11 @@ class TerrainBasedPose2dCommandCfg(UniformPose2dCommandCfg):
     class Ranges:
         """Uniform distribution ranges for the position commands."""
 
-        heading: tuple[float, float] = MISSING
+        heading: tuple[float, float] = MISSING  # type: ignore
         """Heading range for the position commands (in rad).
 
         Used only if :attr:`simple_heading` is False.
         """
 
-    ranges: Ranges = MISSING
+    ranges: Ranges = MISSING  # type: ignore
     """Distribution ranges for the sampled commands."""
