@@ -169,7 +169,7 @@ class UniformPoseCommandCfg(CommandTermCfg):
         yaw: tuple[float, float] = MISSING  # type: ignore
         """Range for the yaw angle (in rad)."""
 
-    ranges: Ranges = MISSING  # type: ignore
+    ranges = None
     """Ranges for the commands."""
 
     goal_pose_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/goal_pose")
