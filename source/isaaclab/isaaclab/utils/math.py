@@ -296,6 +296,22 @@ def quat_from_euler_xyz(roll: torch.Tensor, pitch: torch.Tensor, yaw: torch.Tens
 
     return torch.stack([qw, qx, qy, qz], dim=-1)
 
+def quat_from_euler_tensor(euler: torch.Tensor) -> torch.Tensor:
+    """Convert rotations given as Euler angles in radians to Quaternions.
+
+    Note:
+        The euler angles are assumed in XYZ convention.
+
+    Args:
+        euler: Rotation. Shape is (N, 3).
+
+    Returns:
+        The quaternion in (w, x, y, z). Shape is (N, 4).
+    """
+    roll = euler[..., 0]
+    pitch = euler[..., 1]
+    yaw = euler[..., 2]
+    return quat_from_euler_xyz(roll, pitch, yaw)
 
 @torch.jit.script
 def _sqrt_positive_part(x: torch.Tensor) -> torch.Tensor:
@@ -468,6 +484,27 @@ def euler_xyz_from_quat(
     if wrap_to_2pi:
         return roll % (2 * torch.pi), pitch % (2 * torch.pi), yaw % (2 * torch.pi)
     return roll, pitch, yaw
+
+@torch.jit.script
+def euler_tensor_from_quat(
+    quat: torch.Tensor, wrap_to_2pi: bool = False
+) -> torch.Tensor:
+    """Convert rotations given as quaternions to Euler angles in radians.
+
+    Note:
+        The euler angles are assumed in XYZ extrinsic convention.
+
+    Args:
+        quat: The quaternion orientation in (w, x, y, z). Shape is (N, 4).
+        wrap_to_2pi (bool): Whether to wrap output Euler angles into [0, 2π). If
+            False, angles are returned in the default range (−π, π]. Defaults to
+            False.
+
+    Returns:
+        A tensor containing roll-pitch-yaw of shape (N, 3).
+    """
+    roll, pitch, yaw = euler_xyz_from_quat(quat, wrap_to_2pi=wrap_to_2pi)
+    return torch.stack((roll, pitch, yaw), dim=-1)
 
 
 @torch.jit.script
