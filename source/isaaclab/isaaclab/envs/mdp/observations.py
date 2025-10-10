@@ -674,6 +674,12 @@ def generated_commands(env: ManagerBasedRLEnv, command_name: str | None = None) 
     return env.command_manager.get_command(command_name)
 
 
+@generic_io_descriptor(dtype=torch.float32, observation_type="Command", on_inspect=[record_shape])
+def generated_pos_commands(env: ManagerBasedRLEnv, command_name: str | None = None) -> torch.Tensor:
+    """The generated command from command term in the command manager with the given name."""
+    return env.command_manager.get_command(command_name)[:, :3]
+
+
 """
 Time.
 """
